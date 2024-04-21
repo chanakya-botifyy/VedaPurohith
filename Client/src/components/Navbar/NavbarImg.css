@@ -1,0 +1,233 @@
+
+.navbar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    @media (max-width: 991px){
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    }
+     /* Needed for absolute positioning of h1 */
+  }
+  
+  .navbar-img {
+    width: 100%;
+    height: auto; /* Maintain image aspect ratio */
+     /* Scale image to fill container (optional) */
+     @media (max-width: 991px){
+      position: inherit;
+      width: 150% !important;
+      float: none;
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+     }
+  }
+
+  
+  .navbar-text {
+    position: absolute; /* Position h1 on top of image */
+    top: 241px;
+    left: 73px;
+    /* width: 357px; */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    /* margin-left: 73px; */
+    
+    
+    @media (max-width: 991px) {
+      padding-left: 20px;
+      left: 0px;
+      top: 400px;
+      /* width: 100%; */
+      position: absolute;
+    }
+  }
+  .navbar-text p{
+    margin: 10px;
+    font-size: 34px;
+    font-weight: 600;
+    color: #D9EFFC;
+    width: 400px;
+    @media (max-width: 991px) {
+      font-size: 25px;
+      
+    }
+  }
+  .home{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @media (max-width:991px) {
+      width: 100%;
+    }
+    
+  }
+
+
+
+  .odd-button {
+    width: 150px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid rgba(238, 238, 238, 0.8);
+    border-radius: 20px;
+    color: #252525;
+    line-height: 26px;
+  }
+
+
+  .even-button {
+    width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    background: linear-gradient(329.95deg, #0188D6 18.33%, #01AED9 49.67%, #01CBDC 81.67%);
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(2.5px);
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    color: white;
+    line-height: 26px;
+
+    
+  }
+  
+  button {
+    margin: 5px;
+    padding: 12px 28px;
+    border: none;
+    cursor: pointer;
+    @media (max-width:991px){
+      padding: 0px;
+      
+    }
+  }
+
+  .Menu-title{
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    @media (max-width:480px){
+      padding-left: 20px;
+    }
+
+  }
+  .Menu-title h1{
+    /* width: 707px;
+    height: 55px; */
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 55px;
+    color: #3C1100;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    @media (max-width:991px){
+      /* padding-left: 20px; */
+      font-size: 16px;
+      font-weight: 800;
+    }
+  }
+.buttons{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  @media (max-width:991px){
+    align-items: center;
+  }
+}
+
+
+.menu{
+display: block;
+padding: 0px;
+width: 100%;
+
+
+}
+.menu button{
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: 900;
+
+  @media (max-width:991px){
+    width: 85px;
+    height: 29px;
+    font-size: 11.25px;
+    font-weight: 900;
+  }
+
+}
+.Pujas-Homams{
+  margin: 0px 265px;
+  @media (max-width:991px){
+  margin: 0px 36px;
+  }
+  
+}
+
+.Pujas-Homams h1{
+font-style: normal;
+font-weight: 900;
+font-size: 40px;
+line-height: 55px;
+text-align: center;
+color: #13151E;
+@media (max-width:991px){
+  font-size: 16px;
+  font-weight: 900;
+
+}
+}
+
+.Pujas-Homams p{
+
+/* width: 910px;
+height: 76px; */
+
+font-style: normal;
+font-weight: 900;
+font-size: 20px;
+line-height: 38px;
+text-align: center;
+color: rgba(19, 21, 30, 0.6);
+@media (max-width:991px){
+  font-size: 14px;
+  font-weight: 700;
+  
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
