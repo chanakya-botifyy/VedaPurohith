@@ -1,7 +1,7 @@
 import axios from 'axios';
 const Token = localStorage.getItem('token');
 
-const api = 'http://localhost:4000';
+const api = 'https://king-prawn-app-r46w3.ondigitalocean.app';
 
 const createAxiosInstance = (token) => {
   return axios.create({

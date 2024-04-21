@@ -15,7 +15,7 @@ function PujaDetails() {
   
   const fetchData = async (ProductId) => {
     try {
-      const response = await fetch(`http://localhost:4000/sevalistById/${ProductId}`);
+      const response = await fetch(`https://king-prawn-app-r46w3.ondigitalocean.app/sevalistById/${ProductId}`);
       if (response.ok) {
         const data = await response.json();
         // Process the fetched data, you can set it to state or use it directly

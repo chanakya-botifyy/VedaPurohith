@@ -8,7 +8,6 @@ export default function Footer() {
     { src: "https://cdn.builder.io/api/v1/image/assets/TEMP/9a699010a7a505908d2edd1779e10b85a8f385fff844d83b77ea7ce9731a266e?apiKey=eb7f15f1bc7c491391257f0dd51005fc&", alt: "Social Media 1" },
     { src: "https://cdn.builder.io/api/v1/image/assets/TEMP/a053803c3da706b9b89a127c356433acfca4c49dda2ee1d57e4595391e7833ea?apiKey=eb7f15f1bc7c491391257f0dd51005fc&", alt: "Social Media 2" },
     { src: "https://cdn.builder.io/api/v1/image/assets/TEMP/8d13015808c36120c0fa6761dc00bd861a5089eb5bcc5982be3a34777fa31e38?apiKey=eb7f15f1bc7c491391257f0dd51005fc&", alt: "Social Media 3" },
-    { src: "https://cdn.builder.io/api/v1/image/assets/TEMP/f44868aa6238bbca9a04effa5c155fdd485c29fc3357eac975808fe2309d2b68?apiKey=eb7f15f1bc7c491391257f0dd51005fc&", alt: "Social Media 4" },
     { src: "https://cdn.builder.io/api/v1/image/assets/TEMP/8eb8ede5cce9fdce5b9fa41a6232d9e9826bef1d079a9ecace1ef8d977dc3495?apiKey=eb7f15f1bc7c491391257f0dd51005fc&", alt: "Social Media 5" },
   ];
 

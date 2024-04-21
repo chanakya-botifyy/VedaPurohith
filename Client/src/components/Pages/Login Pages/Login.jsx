@@ -34,7 +34,7 @@ const Login = () => {
     e.preventDefault();
     const expirationTime = new Date(new Date().getTime() + 10 * 60 * 1000);
     try{
-      const response = await instance.post('http://localhost:4000/login',data);
+      const response = await instance.post('https://king-prawn-app-r46w3.ondigitalocean.app/login',data);
       localStorage.setItem('token',response.data.token);
       localStorage.setItem('role', response.data.role);
       localStorage.setItem('userId',response.data.userId);

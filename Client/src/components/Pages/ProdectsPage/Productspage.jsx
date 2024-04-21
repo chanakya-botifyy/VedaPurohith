@@ -21,7 +21,7 @@ const Productspage = () => {
 
   const fetchData = async (selectedValue) => {
     try {
-      const response = await fetch(`http://localhost:4000/allSevas/${selectedValue}`);
+      const response = await fetch(`https://king-prawn-app-r46w3.ondigitalocean.app/allSevas/${selectedValue}`);
       if (response.ok) {
         const data = await response.json();
         // Process the fetched data, you can set it to state or use it directly
@@ -65,7 +65,7 @@ const Productspage = () => {
         </ProductHeader>
         <ProductsList>
           {data.map((item) => (
-              <Link key={item.id} to={`/products/${item._id}`} style={{textDecoration:'none'}} >
+              <Link key={item.id} to={`/products/${item.id}`} style={{textDecoration:'none'}} >
               <PujaCard {...item} />
               </Link>
             ))}

@@ -15,7 +15,7 @@ export default function Products(){
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/allSevas`);
+      const response = await fetch(`https://king-prawn-app-r46w3.ondigitalocean.app/allSevas`);
       if (response.ok) {
         const data = await response.json();
         // Process the fetched data, you can set it to state or use it directly

@@ -19,7 +19,7 @@ const Login = () => {
   }
   const submitHandler = e => {
     e.preventDefault();
-    axios.post('http://localhost:4000/register', data)
+    axios.post('https://king-prawn-app-r46w3.ondigitalocean.app/register', data)
       .then(response => {
         alert(JSON.stringify(response.data.message));
         document.getElementById('registrationForm').reset();
