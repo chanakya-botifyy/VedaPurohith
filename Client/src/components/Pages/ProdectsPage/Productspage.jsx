@@ -6,6 +6,7 @@ import PujaCard from '../../Product Card/PujaCard.jsx';
 import Footer from '../../Footer/Footer.jsx';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 const buttons = [
   { id: 1, label: "Puja", value: "Puja" },
   { id: 2, label: "Vratham", value: "Vratham" },
@@ -16,8 +17,10 @@ const buttons = [
 ];
 
 const Productspage = () => {
-  const [selectedValue, setSelectedValue] = useState("Puja");
+  const { selectedValue1 } = useParams();
+  const [selectedValue, setSelectedValue] = useState([selectedValue1]);
   const [data, setData] = useState([]);
+  
 
   const fetchData = async (selectedValue) => {
     try {

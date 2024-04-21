@@ -117,6 +117,7 @@ const ClientRoutes = ({setTriggerRefresh}) => {
         <Route path='/Purohith' element={<PurohithLogin />} />
         <Route path='/Purohith/Register' element={<PurohithRegistrationForm />} />
         <Route path='/Products' element={<Productspage />} />
+        <Route path='/Products/:value' element={<Productspage />} />
         <Route path='/Products/:ProductId' element={<PujaDetails />} />
         <Route path='/Products/:ProductId/Cart' element={<CartPage />} />
         <Route path='/Products/:ProductId/Cart/address' element={<CartAddPage />} />

@@ -33,8 +33,9 @@ export function NavBarMenu(){
       </div>
       <div className='buttons'>
       <div className="menu">
-      <Link to={'/Products'} style={{textDecoration:'none'}}>
+      
         {buttons.map((button) => (
+          <Link to={`/Products/${button.value}`} style={{textDecoration:'none'}}>
         <button
           key={button.id}
           className={button.id % 2 === 0 ? 'even-button' : 'odd-button'}
@@ -42,8 +43,9 @@ export function NavBarMenu(){
         >
           {button.label}
         </button>
+        </Link>
       ))}
-      </Link>
+      
       </div>
       </div>
       <div className='Pujas-Homams'>

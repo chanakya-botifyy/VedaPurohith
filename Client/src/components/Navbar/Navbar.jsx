@@ -8,6 +8,7 @@ import profileLogo from '../Assets/Puja.png';
 import axios from "axios";
 import Cookies from 'js-cookie';
 import instance from "../../Utils/Api";
+import whatsapp from "../../components/Assets/whatsapp.png";
 
 const NavbarContainer = styled.header`
   display: flex;
@@ -26,6 +27,7 @@ const NavbarContainer = styled.header`
   z-index: 1000;
   width:100%;
   height: 76px;
+  
   @media (max-width: 991px) {
     padding-left: 0px;
   }
@@ -178,7 +180,7 @@ function Navbar() {
   const handleMouseEnter = () => {
     setShowOptions(true);
   };
-  const handleclick = ()=>{
+  const handleclick = () => {
     setShowOptions(true);
     // handleMouseLeave();
   }
@@ -209,6 +211,7 @@ function Navbar() {
     }
   }, [setToken]);
   return (
+    <Navbars>
     <NavbarContainer>
       <div>
         <Link to={'/'} style={{ textDecoration: 'none' }}>
@@ -258,18 +261,18 @@ function Navbar() {
         {token ? (<>
 
           <p>Hello, <b>{data ? data.Name : ''}</b></p>
-          
-            <div className="profile-image-container" onMouseEnter={handleMouseEnter}  onClick={handleclick}>
-              <img src={data ? data.profileImage : ''} alt="Profile Logo" />
-              {showOptions && (
-                <Hover className="options">
-                  <Link to={"/profile"}>
+
+          <div className="profile-image-container" onMouseEnter={handleMouseEnter} onClick={handleclick}>
+            <img src={data ? data.profileImage : ''} alt="Profile Logo" />
+            {showOptions && (
+              <Hover className="options">
+                <Link to={"/profile"}>
                   <button onMouseLeave={handleMouseLeave}>My Profile</button></Link>
-                  <button onClick={()=>{localStorage.removeItem('role'); localStorage.removeItem('token'); localStorage.removeItem('userId'); window.location.reload();}}>Sign Out</button>
-                </Hover>
-              )}
-            </div>
-          
+                <button onClick={() => { localStorage.removeItem('role'); localStorage.removeItem('token'); localStorage.removeItem('userId'); window.location.reload(); }}>Sign Out</button>
+              </Hover>
+            )}
+          </div>
+
         </>)
           : (<>
             <Link to={'/Purohith'} style={{ textDecoration: 'none' }}>
@@ -279,9 +282,37 @@ function Navbar() {
               <LoginButton onClick={() => { window.scrollTo(0, 0); setMenuOpen(false); }}>User Login</LoginButton>
             </Link></>)}
       </DesktopMenu>
+      <Whatsapp>
+        
+        <a href="https://api.whatsapp.com/send?phone=%2B916309108329&text=Hello"> <img src={whatsapp} /></a>
+      </Whatsapp>
     </NavbarContainer >
+    </Navbars>
   );
 }
+const Navbars = styled.div`
+  position: relative;
+`;
+
+const Whatsapp = styled.div`
+  /* position: relative; */
+  /* float: right; */
+  /* top: 50px;
+  right: 10px;
+  width: 5px; */
+
+  position: fixed;
+  bottom: 60px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  z-index: 999; /* Ensure the icon is above other elements */
+
+  & img{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+
+`;
 
 const Hover = styled.div`
   position: absolute;
