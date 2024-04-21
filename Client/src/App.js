@@ -154,6 +154,7 @@ function App() {
       localStorage.removeItem('token');
       localStorage.removeItem('role');
       localStorage.removeItem('userId');
+      window.location.reload();
 
       // Update authenticated state to false
       setAuthenticated(false);

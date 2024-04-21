@@ -1,4 +1,4 @@
-const port = process.env.PORT || 4000;
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -8,6 +8,8 @@ const path = require("path");
 const cors = require("cors");
 const { type } = require("os");
 const { Z_DATA_ERROR } = require("zlib");
+require ('dotenv').config();
+const port = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use(cors());
