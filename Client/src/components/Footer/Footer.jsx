@@ -99,6 +99,7 @@ export default function Footer() {
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 `;
 
 const FooterContent = styled.div`

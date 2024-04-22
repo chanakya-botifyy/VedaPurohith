@@ -31,9 +31,9 @@ export default function PujaCard(props) {
         <CardDescription>
           {shotdescription}...
         </CardDescription>
-        <CardItems>
+        {/* <CardItems>
           <span className="item-label">Items:</span> {first10ItemsString} ...
-        </CardItems>
+        </CardItems> */}
         <CardCost>Cost: {props.cost} INR</CardCost>
         <CardActions>
           <CardviewBook>
@@ -79,10 +79,11 @@ const CardWrapper = styled.article`
   margin-top: 20px;
   margin-bottom: 20px;
   width: 310px;
-  height: 600px;
+  height: 490px;
   /* height: 700px; */
   @media (max-width: 991px) {
     width: 273px;
+    height: 460px;
     margin: 0px;
     padding: 0px;
   }
@@ -193,7 +194,7 @@ const CardActions = styled.div`
   width: 100%;
   margin-bottom: 17px;
   /* padding-left: 42px; */
-  gap: 20px;
+  /* gap: 20px; */
   font-size: 17px;
   font-weight: 700;
   white-space: nowrap;

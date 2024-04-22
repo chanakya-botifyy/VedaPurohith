@@ -17,10 +17,10 @@ const buttons = [
 ];
 
 const Productspage = () => {
-  const { selectedValue1 } = useParams();
-  const [selectedValue, setSelectedValue] = useState([selectedValue1]);
+
+  const [selectedValue, setSelectedValue] = useState("Puja");
   const [data, setData] = useState([]);
-  
+
 
   const fetchData = async (selectedValue) => {
     try {
@@ -50,16 +50,23 @@ const Productspage = () => {
   return (
     <>
       <Products>
-        
+
         <div className='buttons'>
           <div className="menu">
             {buttons.map((button) => (
-              <Button
-                key={button.id}
-                onClick={() => handleSelectValue(button.value)}
-              >
-                {button.label}
-              </Button>
+              // Use the ActiveButton styled component for the active button
+              <React.Fragment key={button.id}>
+                {button.value === selectedValue ? (
+                  <ActiveButton onClick={() => handleSelectValue(button.value)}>
+                    {button.label}
+                  </ActiveButton>
+                ) : (
+                  // Use the regular Button styled component for the other buttons
+                  <Button onClick={() => handleSelectValue(button.value)}>
+                    {button.label}
+                  </Button>
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -68,10 +75,10 @@ const Productspage = () => {
         </ProductHeader>
         <ProductsList>
           {data.map((item) => (
-              <Link key={item.id} to={`/products/${item.id}`} style={{textDecoration:'none'}} >
+            <Link key={item.id} to={`/products/${item.id}`} style={{ textDecoration: 'none' }} >
               <PujaCard {...item} />
-              </Link>
-            ))}
+            </Link>
+          ))}
         </ProductsList>
 
       </Products>
@@ -112,7 +119,34 @@ const Button = styled.button`
       height: 29px;
       font-size: 11.25px;
       font-weight: 900;
-      padding:2px 0px ;
+      padding:0px 0px ;
+      }
+    }
+`;
+const ActiveButton = styled(Button)`
+  width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    background: linear-gradient(329.95deg, #0188D6 18.33%, #01AED9 49.67%, #01CBDC 81.67%);
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(2.5px);
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    color: white;
+    line-height: 26px;
+    @media (max-width:991px){
+      width: 85px;
+      height: 29px;
+      font-size: 11.25px;
+      font-weight: 900;
+      padding: 0px 0px;
+      &:active,&:focus,&:hover{
+        width: 85px;
+      height: 29px;
+      font-size: 11.25px;
+      font-weight: 900;
+      padding:0px 0px ;
       }
     }
 `;

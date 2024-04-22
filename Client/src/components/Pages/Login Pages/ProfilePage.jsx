@@ -66,7 +66,7 @@ function ProfilePage({userInfo}) {
         <HeaderContent>
           <ProfileTitle>Profile</ProfileTitle>
           <ProfileActions>
-            <SignOutText onClick={()=>{localStorage.removeItem('role'); localStorage.removeItem('token'); window.location.reload();}}>Sign Out</SignOutText>
+            <SignOutText onClick={()=>{localStorage.removeItem('role'); localStorage.removeItem('token'); localStorage.removeItem('userId'); window.location.reload(); navigate('/Home')}}>Sign Out</SignOutText>
             <SignOutIcon src="https://cdn.builder.io/api/v1/image/assets/TEMP/d52ec2c452869d61aeb36395db94fc8aa6720d1f0dd63c573be71d08a8ac5a43?apiKey=eb7f15f1bc7c491391257f0dd51005fc&" alt="Sign out icon" onClick={handleBack} />
           </ProfileActions>
         </HeaderContent>

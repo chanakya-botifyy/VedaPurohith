@@ -42,7 +42,7 @@
     @media (max-width: 991px) {
       padding-left: 20px;
       left: 0px;
-      top: 400px;
+      top: 320px;
       /* width: 100%; */
       position: absolute;
     }
@@ -188,6 +188,7 @@ color: #13151E;
 @media (max-width:991px){
   font-size: 16px;
   font-weight: 900;
+
 
 }
 }

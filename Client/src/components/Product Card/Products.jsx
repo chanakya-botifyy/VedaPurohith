@@ -59,9 +59,14 @@ const Product=styled.ul`
     justify-content: center;
     @media (max-width: 991px) {
     display:flex;
-    flex-direction: column;
+    /* flex-direction: column;
     align-items:center;
-    padding: 0px;
+    padding: 0px; */
+    /* display: flex; */
+    flex-wrap: wrap;
+    gap: 4rem;
+    padding-left: 0px;
+    justify-content: center;
   }
 `;
 const Section=styled.div`
@@ -69,7 +74,7 @@ const Section=styled.div`
 width:100%;
 height: auto;
 
-overflow-x: hidden;
+/* overflow-x: hidden; */
 `
 const View = styled.div`
 display: flex;

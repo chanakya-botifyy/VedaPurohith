@@ -84,7 +84,7 @@ const ImageWrapper = styled.div`
   flex-direction: column;
   @media (max-width: 991px) {
     /* position: absolute; */
-    display: none;
+    /* display: none; */
     
 
   }
@@ -94,7 +94,7 @@ const ImageWrapper2 = styled.div`
   display: flex;
   flex-direction: column;
   @media (max-width: 991px) {
-    display: none;
+    /* display: none; */
 
   }
   
@@ -107,6 +107,11 @@ const Image = styled.img`
   width: 112px;
   align-self: end;
   max-width: 100%;
+  @media (max-width: 991px) {
+    /* width: 82px; */
+    display: none;
+
+  }
 `;
 
 const Image2 = styled.img`
@@ -118,7 +123,9 @@ const Image2 = styled.img`
   margin-top: 326px;
 
   @media (max-width: 991px) {
-    margin-top: 40px;
+    /* margin-top: 90px;
+    width: 142px; */
+    display: none;
   }
 `;
 
@@ -144,15 +151,17 @@ const TestimonialContent = styled.div`
 
 const TestimonialWrapper = styled.div`
   display: flex;
-  margin-top: 42px;
+  /* margin-top: 42px; */
   flex-direction: row;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   flex-basis: 0;
-  width: fit-content;
+  /* width: fit-content; */
   gap: 25px;
 
   @media (max-width: 991px) {
     margin: 0px;
+    display: flex;
+    justify-content: center;
     gap: 10px;
 
     
@@ -181,12 +190,14 @@ const TestimonialItem = styled.div`
   text-align: center;
   border: 2px solid #F1F1F1;
   border-radius: 20px;
-  width: 335px;
-  height: 333p;
+  /* width: 335px;
+  height: 333p; */
   padding: 30px;
 
   @media (max-width: 991px) {
-    width:100px;
+    width:25%;
+    display: flex;
+    
     height: 160px;
     margin-top: 0px;
     font-size: 12px;
@@ -254,6 +265,11 @@ const QuoteImage = styled.img`
   object-position: center;
   width: 97px;
   align-self: start;
+  @media (max-width: 991px) {
+    /* margin-top: 90px; */
+    /* width: 60px; */
+    display: none;
+  }
 `;
 const QuoteImage2 = styled.img`
   aspect-ratio: 1.03;
@@ -264,7 +280,9 @@ const QuoteImage2 = styled.img`
   margin-top: 326px;
 
   @media (max-width: 991px) {
-    margin-top: 40px;
+    /* margin-top: 90px;
+    width: 120px; */
+    display: none;
   }
 `;
 

@@ -232,6 +232,7 @@ function Navbar() {
           <a href="/">Home</a>
           <a onClick={handleLinkClick}><Link to={`/Products`} style={{ textDecoration: 'none', color: 'black' }}>Pujas</Link></a>
           <a onClick={handleLinkClick}><Link to={`/Orders`} style={{ textDecoration: 'none', color: 'black' }}>Orders</Link></a>
+          <a onClick={handleLinkClick}><Link to={`/Aboutus`} style={{ textDecoration: 'none', color: 'black' }}>About Us</Link></a>
           <a onClick={handleLinkClick}><Link to={`/Login`} style={{ textDecoration: 'none', color: 'black' }}>User Login</Link></a>
           <a onClick={handleLinkClick}><Link to={`/Purohith`} style={{ textDecoration: 'none', color: 'black' }}>Purohith Login</Link></a>
 
@@ -240,6 +241,7 @@ function Navbar() {
           <a href="/">Home</a>
           <a onClick={handleLinkClick}><Link to={`/Products`} style={{ textDecoration: 'none', color: 'black' }}>Pujas</Link></a>
           <a onClick={handleLinkClick}><Link to={`/Orders`} style={{ textDecoration: 'none', color: 'black' }}>Orders</Link></a>
+          <a onClick={handleLinkClick}><Link to={`/Aboutus`} style={{ textDecoration: 'none', color: 'black' }}>About Us</Link></a>
           <Profile onClick={handleLinkClick}>
 
             <Link to={"/profile"}>
@@ -253,7 +255,7 @@ function Navbar() {
         <a href="/">Home</a>
         <Link to={`/Products`} style={{ textDecoration: 'none', color: 'black' }}>Pujas</Link>
         <Link to={`/Orders`} style={{ textDecoration: 'none', color: 'black' }}>Orders</Link>
-        <a href="#">About us</a>
+        <Link to={`/Aboutus`} style={{ textDecoration: 'none', color: 'black' }}>About Us</Link>
 
       </DeskMenu>
       <DesktopMenu>
@@ -284,7 +286,7 @@ function Navbar() {
       </DesktopMenu>
       <Whatsapp>
         
-        <a href="https://api.whatsapp.com/send?phone=%2B916309108329&text=Hello"> <img src={whatsapp} /></a>
+        <a href="https://api.whatsapp.com/send?phone=%2B917569814157&text=Hello,Welcome to Veda Purohith" target="_blank" > <img src={whatsapp} /></a>
       </Whatsapp>
     </NavbarContainer >
     </Navbars>
@@ -310,6 +312,15 @@ const Whatsapp = styled.div`
     width: 60px;
     height: 60px;
     cursor: pointer;
+  }
+  &:hover {
+    transform : scale(1.1);
+  }
+  @media (max-width:991px){
+    & img{
+    width: 40px;
+    height: 40px;
+  }
   }
 
 `;

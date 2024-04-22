@@ -18,11 +18,21 @@ const buttons = [
   { id: 2, label: "Vratham", value: "Vratham" },
   { id: 3, label: "Homam", value: "Homam" },
   { id: 4, label: "Festivals", value: "Festivals" },
-  { id: 5, label: "Events", value: "Evants" },
+  { id: 5, label: "Events", value: "Events" },
   { id: 6, label: "Vahanam", value: "Vahanam" }
 ];
 
 export function NavBarMenu(){
+
+  // console.log(new Date());
+  // const tokenExpiration = localStorage.getItem('tokenExpiration');
+  // if (tokenExpiration && new Date().getTime() > tokenExpiration) {
+  //   // Token is expired, remove all token-related data from localStorage
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('role');
+  //   localStorage.removeItem('userId');
+  //   localStorage.removeItem('tokenExpiration');
+  // }
 
 
   return(
@@ -35,7 +45,7 @@ export function NavBarMenu(){
       <div className="menu">
       
         {buttons.map((button) => (
-          <Link to={`/Products/${button.value}`} style={{textDecoration:'none'}}>
+          <Link to={`/Products`} style={{textDecoration:'none'}}>
         <button
           key={button.id}
           className={button.id % 2 === 0 ? 'even-button' : 'odd-button'}

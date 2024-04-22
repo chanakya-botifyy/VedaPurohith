@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import React, {  useState, useContext } from 'react';
 import axios from "axios";
 import Logo from '../../Assets/userloginlogo.png';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 // import { NavbarImg } from '../../Navbar/NavbarImg.jsx';
 // import ProfilePage from './ProfilePage.jsx';
 import {store, refreshContext} from '../../../App.js';
 import Cookies from 'js-cookie';
 import instance from '../../../Utils/Api.js';
+// import jwtDecode from 'jwt-decode';
 
 const Login = () => {
   // const [email, setEmail] = useState('');
@@ -18,9 +19,12 @@ const Login = () => {
   // const [userInfo, setUserInfo] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
   const [token,setToken] = useContext(store);
   const [exptime,setExptime] = useState();
   const {setTriggerRefresh} = useContext(refreshContext);
+
+  // const decodedToken = jwtDecode(token);
 
   const [data,setData] = useState({
     Email:'',
@@ -30,37 +34,38 @@ const Login = () => {
   const changeHandler = e =>{
     setData({...data,[e.target.name]:e.target.value})
   }
-  const submitHandler = async e =>{
+  const submitHandler = async (e) => {
     e.preventDefault();
-    const expirationTime = new Date(new Date().getTime() + 10 * 60 * 1000);
-    try{
-      const response = await instance.post('https://king-prawn-app-r46w3.ondigitalocean.app/login',data);
-      localStorage.setItem('token',response.data.token);
+    try {
+      const response = await instance.post('https://king-prawn-app-r46w3.ondigitalocean.app/login', data);
+      const expirationTime = new Date().getTime() + 10 * 60 * 1000; // Token expiration time in milliseconds
+      localStorage.setItem('token', response.data.token);
       localStorage.setItem('role', response.data.role);
-      localStorage.setItem('userId',response.data.userId);
-      // localStorage.setItem('tokenExpiration', expirationTime);
-      // setExptime(expirationTime)
+      localStorage.setItem('userId', response.data.userId);
+      localStorage.setItem('tokenExpiration', expirationTime);
+      setExptime(expirationTime);
       setToken(response.data.token);
       console.log(response.data);
-      setTriggerRefresh(prev => prev + 1);
-      navigate('/');
+      setTriggerRefresh((prev) => prev + 1);
+      navigate(location.state?.from || '/');
       window.location.reload();
-    }catch(error){
-      // Check if error response contains data (error message from server)
+    } catch (error) {
       if (error.response && error.response.data) {
-        alert(error.response.data); // Display error message
+        alert(error.response.data);
       } else {
-        alert('An error occurred'); // Display generic error message
+        alert('An error occurred');
       }
-    };
-  }
-  if (new Date(exptime) < new Date()) {
-    // Token is expired, remove it from localStorage
-    localStorage.removeItem('token');
-    // localStorage.removeItem('tokenExpiration');
-    localStorage.removeItem('role');
-    return null;
-  }
+    }
+  };
+  // console.log(new Date());
+  // const tokenExpiration = localStorage.getItem('tokenExpiration');
+  // if (tokenExpiration && new Date().getTime() > tokenExpiration) {
+  //   // Token is expired, remove all token-related data from localStorage
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('role');
+  //   localStorage.removeItem('userId');
+  //   localStorage.removeItem('tokenExpiration');
+  // }
 
   // const handleClick =() =>{
   //   signInWithPopup(auth,provider).then((data)=>{
@@ -74,20 +79,20 @@ const Login = () => {
 
   
 
-  if(token){
-    //  navigate('/');
-    //  const expirationTime = new Date(new Date().getTime() + 10 * 60 * 1000);
-    //  Cookies.set('token', token, { expires: expirationTime });
-    //  window.location.reload();
-     setTimeout(() => {
-      // If the token is expired, navigate to the home page
-      // navigate('/');
-      localStorage.removeItem('token');
-      localStorage.removeItem('role');
+  // if(token){
+  //   //  navigate('/');
+  //   //  const expirationTime = new Date(new Date().getTime() + 10 * 60 * 1000);
+  //   //  Cookies.set('token', token, { expires: expirationTime });
+  //   //  window.location.reload();
+  //    setTimeout(() => {
+  //     // If the token is expired, navigate to the home page
+  //     // navigate('/');
+  //     localStorage.removeItem('token');
+  //     localStorage.removeItem('role');
 
-      window.location.reload();
-    }, 10 * 60 * 1000);
-  }
+  //     window.location.reload();
+  //   }, 10 * 60 * 1000);
+  // }
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -113,9 +118,9 @@ const Login = () => {
             </WelcomeSection>
             <LoginFormSection>
               <LoginForm onSubmit={submitHandler} autoComplete='off'>
-                <EmailLabel>Email</EmailLabel>
+                <EmailLabel>Email*</EmailLabel>
                 <EmailInput type="email" name="Email" placeholder="Enter your email"  onChange={changeHandler}  required />
-                <PasswordLabel>Password</PasswordLabel>
+                <PasswordLabel>Password*</PasswordLabel>
                 <PasswordInputWrapper>
                   <PasswordInput type={showPassword ? 'text' : 'password'} name="Password" placeholder="Enter your password"  onChange={changeHandler} required />
                   <PasswordVisibilityToggle src="https://cdn.builder.io/api/v1/image/assets/TEMP/9ca883c0965f77439c9a2380363b5f8d63563883baa64d8373f37f976ef06238?apiKey=eb7f15f1bc7c491391257f0dd51005fc&" alt="Toggle Password Visibility" onClick={togglePasswordVisibility} />
@@ -486,7 +491,7 @@ const SignInButton = styled.button`
   cursor: pointer;
 
   @media (max-width: 991px) {
-    white-space: initial;
+    /* white-space: initial; */
     padding: 9px 138px;
   }
 `;

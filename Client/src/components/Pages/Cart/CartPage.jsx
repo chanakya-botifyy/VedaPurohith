@@ -189,11 +189,11 @@ function CartPage() {
               <CartDetails id="Order created Succesfully" onSubmit={submitHandler}>
 
                 <CartDetailItem>
-                  <CartDetailLabel>Date</CartDetailLabel>
+                  <CartDetailLabel>Date*</CartDetailLabel>
                   <CartDetailValue type="date" placeholder="MM/DD/YYYY" name="OrderDate" onChange={handleSubmit} required />
                 </CartDetailItem>
                 <CartDetailItem>
-                  <CartDetailLabel>Slot</CartDetailLabel>
+                  <CartDetailLabel>Slot*</CartDetailLabel>
                   {/* <CartDetailValue placeholder="Select Slot" name="slot" onChange={(event) => setSlot(event.target.value)} required /> */}
                   <CartSlotValue placeholder="Select Slot" name="Slot" onChange={handleSubmit} required>
                     <option value="Select Slot">Select Slot</option>
@@ -206,15 +206,15 @@ function CartPage() {
                   </CartSlotValue>
                 </CartDetailItem>
                 <CartDetailItem>
-                  <CartDetailLabel>Address</CartDetailLabel>
+                  <CartDetailLabel>Address*</CartDetailLabel>
                   <CartDetailTextarea placeholder="Enter your Address" name="Location" value={data.Location} onChange={handleSubmit} required />
 
                 </CartDetailItem>
                 <Checkbox>
-                  <input type="checkbox" id="sameAddressCheckbox" onChange={handleCheckboxChange} /><label>Same as address</label>
+                  <input type="checkbox" id="sameAddressCheckbox" onChange={handleCheckboxChange} /><label>Same as Address</label>
                 </Checkbox>
                 <CartDetailItem>
-                  <CartDetailLabel>Billing Address</CartDetailLabel>
+                  <CartDetailLabel>Billing Address*</CartDetailLabel>
                   <CartDetailTextarea placeholder="Enter your Billing Address" name="BillingAddress" value={data.BillingAddress} onChange={handleSubmit} required />
 
                 </CartDetailItem>
@@ -448,8 +448,9 @@ const Forms = styled.div`
 display: flex;
 justify-content: center;
 margin-bottom: 150px;
+margin-top: 76px;
 @media (max-width: 991px) {
-    padding-top: 76px;
+    /* padding-top: 76px;  */
     margin-bottom: 0px;
 
   }
@@ -459,7 +460,7 @@ const CartContainer = styled.div`
   display: flex;
   flex-direction: column;
   @media (max-width: 991px) {
-    width: 292px;
+    width: 70%;
     /* margin: 0px 34px; */
     
   }
@@ -490,7 +491,8 @@ const CartTitle = styled.h1`
 
   @media (max-width: 991px) {
     /* max-width: 100%; */
-    width: 292px;
+    /* width: 292px; */
+    width: 70%;
     padding: 0px;
     font-size: 16px;
     font-weight: 900;
@@ -507,7 +509,7 @@ const CartItems = styled.section`
 
   @media (max-width: 991px) {
     /* max-width: 100%; */
-    width: 292px;
+    width: 100%;
     /* margin:0px 36px; */
     
 
@@ -668,7 +670,7 @@ const CartDetails = styled.form`
   letter-spacing: -0.64px;
 
   @media (max-width: 991px) {
-    width: 292px;
+    width: 100%;
   }
 `;
 
@@ -712,7 +714,7 @@ justify-content: center;
   padding-right: 12px;
   font-size:15px;
   @media (max-width: 991px) {
-    width: 292px;
+    width: 100%;
   }
 `;
 const CartDetailValue = styled.input`
@@ -728,7 +730,7 @@ const CartDetailValue = styled.input`
   width: 688px;
 
   @media (max-width: 991px) {
-    width: 292px;
+    width: 100%;
     /* align-items: left; */
     padding: 11px 0px;
   }
@@ -756,7 +758,7 @@ const CartActions = styled.footer`
   /* line-height: 150%; */
 
   @media (max-width: 991px) {
-    width: 292px;
+    /* width: 70%; */
   }
 `;
 

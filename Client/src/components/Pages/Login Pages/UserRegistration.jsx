@@ -63,25 +63,43 @@ const Login = () => {
             </WelcomeSection>
             <LoginFormSection>
               <LoginForm id="registrationForm" onSubmit={submitHandler}>
-                <EmailLabel>Name</EmailLabel>
+                <EmailLabel>Name*</EmailLabel>
                 <EmailInput type="text" placeholder="Enter your Name" name='Name' onChange={handleSubmit} autoComplete='off' required />
-                <EmailLabel>Mobile Number</EmailLabel>
+                <EmailLabel>Mobile Number*</EmailLabel>
                 <NumberVerify>
-                  <Input type="number" placeholder="Enter your Mobile Number" name='Phone' onChange={handleSubmit} autoComplete='off' required />
+                  <Input type="number"
+                    placeholder="Enter your Mobile Number"
+                    name='Phone'
+                    onChange={handleSubmit}
+                    autoComplete='off'
+                    onInput={(e) => {
+                      // Restrict to 10 digits
+                      e.target.value = e.target.value.slice(0, 10);
+                      // Ensure the entered number starts with 9, 8, 7, or 6
+                      const validPrefixes = ['9', '8', '7', '6'];
+                      const inputValue = e.target.value;
+                      if (inputValue.length >= 1 && !validPrefixes.includes(inputValue.charAt(0))) {
+                        e.target.setCustomValidity('Mobile number must start with 9, 8, 7, or 6.');
+                      } else {
+                        e.target.setCustomValidity('');
+                      }
+                    }}
+                    required
+                  />
                   <Verify >Verify</Verify>
                 </NumberVerify>
                 <OTPVerify>
                   <VerifyOTP type="number" placeholder="Enter OTP" />
                   <Verify1>Resend code</Verify1>
                 </OTPVerify>
-                <EmailLabel>Email</EmailLabel>
+                <EmailLabel>Email*</EmailLabel>
                 <EmailInput type="email" placeholder="Enter your email" name='Email' onChange={handleSubmit} autoComplete='off' required />
-                <PasswordLabel>Password</PasswordLabel>
+                <PasswordLabel>Password*</PasswordLabel>
                 <PasswordInputWrapper>
                   <PasswordInput type={showPassword ? 'text' : 'password'} placeholder="Enter your password" name='Password' onChange={handleSubmit} autoComplete='off' required />
                   <PasswordVisibilityToggle src={eye} alt="Toggle Password Visibility" onClick={togglePasswordVisibility} />
                 </PasswordInputWrapper>
-                <PasswordLabel>Re Enter Password</PasswordLabel>
+                <PasswordLabel>Re Enter Password*</PasswordLabel>
                 <PasswordInputWrapper>
                   <PasswordInput type={showPassword ? 'text' : 'password'} placeholder="Enter your password" name='ConfirmPassword' onChange={handleSubmit} autoComplete='off' required />
                   <PasswordVisibilityToggle src={eye} alt="Toggle Password Visibility" onClick={togglePasswordVisibility} />
@@ -631,6 +649,18 @@ const NumberVerify = styled.div`
   white-space: nowrap;
   line-height: 143%;
   padding: 11px 12px;
+  appearance: none;
+  /* Hide spinners for number input */
+  &[type="number"]::-webkit-inner-spin-button,
+  &[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Optionally, you can hide the arrows in Firefox */
+  /* &[type="number"] {
+    -moz-appearance: textfield;
+  } */
 `
 const Verify = styled.a`
   object-fit: auto;
@@ -640,6 +670,7 @@ const Verify = styled.a`
   cursor: pointer;
   font-size: 11px;
 `
+
 
 
 

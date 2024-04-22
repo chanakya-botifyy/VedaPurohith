@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import god from "../Assets/god pic.jpg";
 
 function ThilaHomamSection1() {
   return (
@@ -22,7 +23,7 @@ function ThilaHomamSection1() {
           </TextContent>
         </TextColumn>
         <ImageColumn>
-          <Image src="https://cdn.builder.io/api/v1/image/assets/TEMP/4fc081b6a563f9e5d1903cd2a6bfb1c01445e67812623f3b0bc1e5d688ea95b4?apiKey=eb7f15f1bc7c491391257f0dd51005fc&" alt="Thila Homam" loading="lazy" />
+          <Image src={god} alt="Thila Homam" loading="lazy" />
         </ImageColumn>
       </ContentWrapper>
     </SectionWrapper>
@@ -82,6 +83,7 @@ const Image = styled.img`
   aspect-ratio: 1;
   object-fit: cover;
   width: 100%;
+  border-radius: 20px;
 
   @media (max-width: 991px) {
     /* margin-top: 40px; */

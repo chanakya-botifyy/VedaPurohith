@@ -54,11 +54,11 @@ const PurohithLogin = () => {
           </WelcomeSection>
         <LoginFormSection>
             <LoginForm onSubmit={submitHandler} >
-              <EmailLabel>Email</EmailLabel>
-              <EmailInput placeholder="Enter your email" name="Email" onChange={changeHandler}  required />
-              <PasswordLabel>Password</PasswordLabel>
+              <EmailLabel>Email*</EmailLabel>
+              <EmailInput type="email" placeholder="Enter your email" name="Email" onChange={changeHandler}  required />
+              <PasswordLabel>Password*</PasswordLabel>
               <PasswordInputWrapper>
-                <PasswordInput placeholder="Enter your password" name="Password" onChange={changeHandler} required />
+                <PasswordInput type="password" placeholder="Enter your password" name="Password" onChange={changeHandler} required />
                 <PasswordVisibilityToggle src="https://cdn.builder.io/api/v1/image/assets/TEMP/9ca883c0965f77439c9a2380363b5f8d63563883baa64d8373f37f976ef06238?apiKey=eb7f15f1bc7c491391257f0dd51005fc&" alt="Toggle Password Visibility" />
               </PasswordInputWrapper>
               <ForgotPassword>

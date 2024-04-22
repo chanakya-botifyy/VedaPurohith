@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useState,useContext,useEffect,useRef } from 'react';
 import eye from '../../Assets/eye.png';
 import image from '../../Assets/Puja.png';
-// import trush from '../../Assets/trash.png';
+import trush from '../../Assets/trash.png';
 import { store } from '../../../App';
 import axios from "axios";
 import Cookies from 'js-cookie';
@@ -116,6 +116,10 @@ export default function ProfileEdit() {
   const handleBack =()=>{
     navigate(-1);
   }
+  const handleDefaultProfileImage = () => {
+    const defaultProfileImageUrl = "https://king-prawn-app-r46w3.ondigitalocean.app/ProfilePic/default profile.png";
+    setData({ ...data, profileImage: defaultProfileImageUrl });
+  };
   return (
     <Form>
       {data &&
@@ -134,7 +138,7 @@ export default function ProfileEdit() {
           <img src={data.profileImage} alt='profile pic' for="file-upload" style={{ display: 'inline-block' }} onClick={handleImageClick} />
           <Profile>
           <p>Profile Picture</p>
-          {/* <img src={trush} /> */}
+          <img src={trush} alt="trash icon" onClick={handleDefaultProfileImage}/>
           </Profile>
         </ProfilePic>
         <Field>
@@ -152,8 +156,10 @@ export default function ProfileEdit() {
             </OTPVerify>
             <EmailLabel>Email</EmailLabel>
             <EmailInput type="email" placeholder="Enter your email" name='Email' value={data.Email || ''} onChange={handleChange} required />
-              <AddressLabel>Address 1 :</AddressLabel>
-              <AddressValue name='Address' value={data.Address} onChange={handleChange} />
+              <RegistrationFormField>
+                <RegistrationFormLabel>Address*</RegistrationFormLabel>
+                <RegistrationFormTextarea type="text" placeholder="Enter your Address" name='Address' value={data.Address} onChange={handleChange} />
+              </RegistrationFormField>
               {/* <AddressLabel>Address 2 :</AddressLabel>
               <AddressValue /> */}
           </LeftField>
@@ -184,6 +190,36 @@ export default function ProfileEdit() {
     </Form>
   )
 }
+
+const RegistrationFormField = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+  width: 310px;
+`;
+
+const RegistrationFormLabel = styled.label`
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  font-size: 11px;
+  @media (max-width: 991px) {
+    font-size: 11px;
+    font-weight: 400;
+  }
+`;
+
+const RegistrationFormTextarea = styled.textarea`
+  background-color: #fff;
+  border: 1px solid rgba(237, 237, 237, 1);
+  border-radius: 6.211px;
+  color: #6b6b6b;
+  margin-top: 7px;
+  padding: 10px 12px;
+  height: 50px;
+  resize: none;
+  width: 305px;
+`;
 
 const CancelButton = styled.button`
   width: 145px;
@@ -330,6 +366,7 @@ const AddressValue = styled.textarea`
   font-size: 14px;
   font-weight: 400;
   color: #63747c;
+  border: 1px solid rgba(237, 237, 237, 1);
   background-color: #ffffff;
   border-radius: 10px;
   padding: 10px;

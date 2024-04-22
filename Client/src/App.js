@@ -45,6 +45,7 @@ import Notifications from './pages/Admin/Notifications.js';
 import Paymentstatus from './components/Pages/Cart/paymentstatus.jsx';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import Aboutus from './components/SpecialOfferSection/Aboutus.jsx';
 
 
 
@@ -117,8 +118,9 @@ const ClientRoutes = ({setTriggerRefresh}) => {
         <Route path='/Purohith' element={<PurohithLogin />} />
         <Route path='/Purohith/Register' element={<PurohithRegistrationForm />} />
         <Route path='/Products' element={<Productspage />} />
-        <Route path='/Products/:value' element={<Productspage />} />
+        {/* <Route path='/Products/:value' element={<Productspage />} /> */}
         <Route path='/Products/:ProductId' element={<PujaDetails />} />
+        {/* <Route path='/Products/:value/:ProductId' element={<PujaDetails />} /> */}
         <Route path='/Products/:ProductId/Cart' element={<CartPage />} />
         <Route path='/Products/:ProductId/Cart/address' element={<CartAddPage />} />
         <Route path='/Orders' element={<OrdersPage />} />
@@ -131,6 +133,7 @@ const ClientRoutes = ({setTriggerRefresh}) => {
         <Route path='/Profile' element={<ProfilePage />}/>
         <Route path='/ProfileEdit' element={<ProfileEdit />}/>
         <Route path='/PaymentStatus/:id' element={<Paymentstatus />}/>
+        <Route path='/Aboutus' element={<Aboutus />} />
 
       </Routes>
       
