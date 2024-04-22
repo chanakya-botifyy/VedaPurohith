@@ -30,7 +30,7 @@ function PurohithRegistrationForm() {
     Password: '',
     ConfirmPassword: ''
   });
-  
+
   const handleSubmit = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
   }
@@ -62,7 +62,7 @@ function PurohithRegistrationForm() {
       const imageUrl = request.data.image_url;
       setData({ ...data, DetailsFile: imageUrl });
     } catch (error) {
-      
+
       console.error('Upload failed. Error:', error);
     }
   };
@@ -75,7 +75,7 @@ function PurohithRegistrationForm() {
   //     const response = await instance.post('/uploadcertificates', formData);
   //     const imageUrl = request.data.image_url;
   //     setData({ ...data, Certificates: imageUrl });
-        
+
   //   } catch (error) {
   //     console.error('Upload failed. Error:', error);
   //   }
@@ -116,19 +116,37 @@ function PurohithRegistrationForm() {
               </RegistrationFormField>
               <RegistrationFormField>
                 <RegistrationFormLabel>Phone Number*</RegistrationFormLabel>
-                <RegistrationFormInput type="number" placeholder="Enter your Number" name="Phone" onChange={handleSubmit} onInput={(e) => {e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 10);}} required autoComplete='off'/>
+                <RegistrationFormInput
+                  type="number"
+                  placeholder="Enter your Number"
+                  name="Phone"
+                  onChange={handleSubmit}
+                  onInput={(e) => {
+                    // Restrict to 10 digits
+                    e.target.value = e.target.value.slice(0, 10);
+                    // Ensure the entered number starts with 9, 8, 7, or 6
+                    const validPrefixes = ['9', '8', '7', '6'];
+                    const inputValue = e.target.value;
+                    if (inputValue.length >= 1 && !validPrefixes.includes(inputValue.charAt(0))) {
+                      e.target.setCustomValidity('Mobile number must start with 9, 8, 7, or 6.');
+                    } else {
+                      e.target.setCustomValidity('');
+                    }
+                  }}
+                  required
+                  autoComplete='off' />
               </RegistrationFormField>
               <RegistrationFormField>
                 <RegistrationFormLabel>Email*</RegistrationFormLabel>
-                <RegistrationFormInput type="email" placeholder="Enter your email" name="Email" onChange={handleSubmit} required autoComplete='off'/>
+                <RegistrationFormInput type="email" placeholder="Enter your email" name="Email" onChange={handleSubmit} required autoComplete='off' />
               </RegistrationFormField>
               <RegistrationFormField>
                 <RegistrationFormLabel>Address*</RegistrationFormLabel>
-                <RegistrationFormTextarea type="text" placeholder="Enter your Address" name="Address" onChange={handleSubmit} required autoComplete='off'/>
+                <RegistrationFormTextarea type="text" placeholder="Enter your Address" name="Address" onChange={handleSubmit} required autoComplete='off' />
               </RegistrationFormField>
               <RegistrationFormField>
                 <RegistrationFormLabel>Date of Birth*</RegistrationFormLabel>
-                <RegistrationFormInputdate placeholder="Enter your Date of birth (DD/MM/YY)" type="date" name="DateofBirth" onChange={handleSubmit} required autoComplete='off'/>
+                <RegistrationFormInputdate placeholder="Enter your Date of birth (DD/MM/YY)" type="date" name="DateofBirth" onChange={handleSubmit} required autoComplete='off' />
               </RegistrationFormField>
               {/* <RegistrationFormField>
                 <RegistrationFormLabel>Introduction</RegistrationFormLabel>
@@ -136,21 +154,21 @@ function PurohithRegistrationForm() {
               </RegistrationFormField> */}
               <RegistrationFormField>
                 <RegistrationFormLabel>Languages*</RegistrationFormLabel>
-                <RegistrationFormTextarea type="text" placeholder="Enter Known languages" name="Languages" onChange={handleSubmit} required autoComplete='off'/>
+                <RegistrationFormTextarea type="text" placeholder="Enter Known languages" name="Languages" onChange={handleSubmit} required autoComplete='off' />
               </RegistrationFormField>
             </RegistrationFormColumn>
             <RegistrationFormColumn>
               <RegistrationFormField>
                 <RegistrationFormLabel>PAN Number*</RegistrationFormLabel>
-                <RegistrationFormInput type="text" placeholder="Enter your PAN Number" name="PanNumber" onChange={handleSubmit} required autoComplete='off'/>
+                <RegistrationFormInput type="text" placeholder="Enter your PAN Number" name="PanNumber" onChange={handleSubmit} required autoComplete='off' />
               </RegistrationFormField>
               <RegistrationFormField>
                 <RegistrationFormLabel>Aadhaar Number*</RegistrationFormLabel>
-                <RegistrationFormInput type="number" placeholder="Enter your Aadhaar Number" name="AadharNumber" onChange={handleSubmit} onInput={(e) => {e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 12);}} required autoComplete='off'/>
+                <RegistrationFormInput type="number" placeholder="Enter your Aadhaar Number" name="AadharNumber" onChange={handleSubmit} onInput={(e) => { e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 12); }} required autoComplete='off' />
               </RegistrationFormField>
               <RegistrationFormField>
                 <RegistrationFormLabel>Experience*</RegistrationFormLabel>
-                <RegistrationFormInput type="text" placeholder="Enter your Experience in years" name="Experience" onChange={handleSubmit} required autoComplete='off'/>
+                <RegistrationFormInput type="text" placeholder="Enter your Experience in years" name="Experience" onChange={handleSubmit} required autoComplete='off' />
               </RegistrationFormField>
               <RegistrationFormUpload>
                 <RegistrationFormUploadLabel>
@@ -178,7 +196,7 @@ function PurohithRegistrationForm() {
                   </RegistrationFormUploadDropzone>
                 </RegistrationFormUploadContent>
               </RegistrationFormUpload>
-              
+
               {/* <RegistrationFormUpload>
                 <RegistrationFormUploadLabel>
                   Upload Certificates and Recognitions
@@ -211,26 +229,26 @@ function PurohithRegistrationForm() {
             <RegistrationFormColumn>
               <RegistrationFormField>
                 <RegistrationFormLabel>Bank Account Number*</RegistrationFormLabel>
-                <RegistrationFormInput type="number" placeholder="Enter your Bank Account Number" name="AccountNumber" onChange={handleSubmit} required autoComplete='off'/>
+                <RegistrationFormInput type="number" placeholder="Enter your Bank Account Number" name="AccountNumber" onChange={handleSubmit} required autoComplete='off' />
               </RegistrationFormField>
               <RegistrationFormField>
                 <RegistrationFormLabel>IFSC Code*</RegistrationFormLabel>
-                <RegistrationFormInput type="text" placeholder="Enter your IFSC Code" name="IfscCode" onChange={handleSubmit} required autoComplete='off'/>
+                <RegistrationFormInput type="text" placeholder="Enter your IFSC Code" name="IfscCode" onChange={handleSubmit} required autoComplete='off' />
               </RegistrationFormField>
               <RegistrationFormField>
                 <RegistrationFormLabel>Bank Name*</RegistrationFormLabel>
-                <RegistrationFormInput type="text" placeholder="Enter your Bank Name" name="BankName" onChange={handleSubmit} required autoComplete='off'/>
+                <RegistrationFormInput type="text" placeholder="Enter your Bank Name" name="BankName" onChange={handleSubmit} required autoComplete='off' />
               </RegistrationFormField>
               <PasswordLabel>Password*</PasswordLabel>
-                <PasswordInputWrapper>
-                  <PasswordInput type={showPassword ? 'text' : 'password'} placeholder="Enter your password" name='Password' onChange={handleSubmit} autoComplete='off' required />
-                  <PasswordVisibilityToggle src={eye} alt="Toggle Password Visibility" onClick={togglePasswordVisibility} />
-                </PasswordInputWrapper>
-                <PasswordLabel>Re Enter Password*</PasswordLabel>
-                <PasswordInputWrapper>
-                  <PasswordInput type={showPassword ? 'text' : 'password'} placeholder="Enter your password" name='ConfirmPassword' onChange={handleSubmit} autoComplete='off' required  />
-                  <PasswordVisibilityToggle src={eye} alt="Toggle Password Visibility" onClick={togglePasswordVisibility} />
-                </PasswordInputWrapper>
+              <PasswordInputWrapper>
+                <PasswordInput type={showPassword ? 'text' : 'password'} placeholder="Enter your password" name='Password' onChange={handleSubmit} autoComplete='off' required />
+                <PasswordVisibilityToggle src={eye} alt="Toggle Password Visibility" onClick={togglePasswordVisibility} />
+              </PasswordInputWrapper>
+              <PasswordLabel>Re Enter Password*</PasswordLabel>
+              <PasswordInputWrapper>
+                <PasswordInput type={showPassword ? 'text' : 'password'} placeholder="Enter your password" name='ConfirmPassword' onChange={handleSubmit} autoComplete='off' required />
+                <PasswordVisibilityToggle src={eye} alt="Toggle Password Visibility" onClick={togglePasswordVisibility} />
+              </PasswordInputWrapper>
             </RegistrationFormColumn>
           </RegistrationFormColumns>
         </RegistrationFormContent>

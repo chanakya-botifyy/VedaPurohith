@@ -60,6 +60,7 @@ const ContentWrapper = styled.div`
   display: flex;
   align-items:center;
   gap: 20px;
+  justify-content: space-around;
 
   @media (max-width: 991px) {
     flex-direction: row;
